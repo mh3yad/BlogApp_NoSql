@@ -6,7 +6,7 @@
 * deleteUser
 * getUserBlogs
 * getAllBlogs
-### Blogs
+### Blogs APIs
 * addNewBlog
 * updateBlog
 * deleteBlogd

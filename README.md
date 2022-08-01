@@ -16,3 +16,4 @@
 * pagination support
 * One to Many relationship between User and Blog 
   * each user can have many Blogs 
+* Validation script with Joi lib

@@ -1,4 +1,5 @@
 let express =  require("express")
+require('dotenv').config()
 const app = express();
 let blogRoutes = require("./routes/blog.routes");
 let userRoutes = require("./routes/user.routes");
@@ -8,7 +9,6 @@ connection();
 app.use(express.json())
 app.use(userRoutes);
 app.use(blogRoutes);
-  
 
 
-app.listen(8080,() => console.log("running "));
+app.listen(process.env.PORT,() => console.log(`running on port ${process.env.PORT}`));

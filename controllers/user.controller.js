@@ -1,4 +1,5 @@
 let User = require("../model/user.model");
+let bcrypt = require("bcrypt")
 
 
 /*----------------------*/
@@ -57,6 +58,18 @@ let getUserBlogs = (async(req,res) => {
     let userBlogs = await User.findById({_id}).populate("userBlogs");
     res.status(200).json({message:"success",userBlogs:userBlogs.userBlogs});
 })
+
+let comparePassword = async (req,res) => {
+  console.log("triggered");
+  let {email,password} = req.body;
+  let user = await User.findOne({email});
+  let match = await bcrypt.compare(password,user.password);
+  if(match){
+    res.status(200).json({"message":"matched"});
+  }else{
+    res.status(400).json({"message":"not matched"});
+  }
+}
     
 
 module.exports = 
@@ -66,6 +79,7 @@ module.exports =
     getAllUsers,
     getUserById,
     deleteUser,
-    getUserBlogs
+    getUserBlogs,
+    comparePassword
 
 }

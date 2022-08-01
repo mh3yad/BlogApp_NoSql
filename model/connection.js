@@ -1,5 +1,6 @@
 const Mongoose = require('mongoose');
-const dburl = "mongodb://localhost:27017/blog";
+require("dotenv").config();
+const dburl = process.env.SERVER_STRING;
 const connection = () => {
   return Mongoose.connect(dburl,
     {useNewUrlParser:true,useUnifiedTopology:true}
